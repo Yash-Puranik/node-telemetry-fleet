@@ -21,12 +21,12 @@ jobs:
           file: ./services/node-service/Dockerfile
           load: true
           tags: node-telemetry-fleet:ci
-          
+
       - name: Build local image for testing
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./services/node-service/Dockerfile
           load: true
           tags: node-telemetry-fleet:ci
 
@@ -51,6 +51,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./services/node-service/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/node-telemetry-fleet:latest,${{ secrets.DOCKERHUB_USERNAME }}/node-telemetry-fleet:${{ github.sha }}
