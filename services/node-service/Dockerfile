@@ -1,10 +1,10 @@
-FROM node:20-alpine
+FROM node:20-slim
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci --omit=dev --no-audit --no-fund || npm install --omit=dev --no-audit --no-fund
+RUN npm install --omit=dev --loglevel verbose
 
 COPY . .
 

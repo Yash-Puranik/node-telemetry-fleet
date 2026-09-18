@@ -28,6 +28,7 @@ jobs:
           context: ./services/node-service
           file: ./services/node-service/Dockerfile
           load: true
+          platforms: linux/amd64
           tags: node-telemetry-fleet:ci
 
       - name: Run test container
@@ -49,7 +50,7 @@ jobs:
           docker ps -a
           echo "=== Container Logs ==="
           docker logs test-agent
-          
+
       - name: Log in to Docker Hub
         if: github.ref == 'refs/heads/test-ci' && github.event_name == 'push'
         uses: docker/login-action@v3
