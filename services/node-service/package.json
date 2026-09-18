@@ -1,0 +1,12 @@
+{
+  "name": "node-telemetry-fleet",
+  "version": "1.0.0",
+  "description": "Production container fleet telemetry and health monitoring service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
