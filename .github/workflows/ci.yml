@@ -12,7 +12,7 @@
        - name: Docker BuildX
          uses: docker/setup-buildx-action@v3
        - name: Build docker image
-         run: docker build -t node-telemetry-fleet:ci .
+         run: docker build -t node-telemetry-fleet:ci ./node-telemetry-fleet/services/node-service
        - name: Run container and verify health of server
          run: docker run -d -p 3000:3000 --name test-agent node-telemetry-fleet:ci
        - name: Service initialization wait time
