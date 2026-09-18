@@ -17,7 +17,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          context: .
+          context: ./services/node-service
           file: ./services/node-service/Dockerfile
           load: true
           tags: node-telemetry-fleet:ci
@@ -25,7 +25,7 @@ jobs:
       - name: Build local image for testing
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./services/node-service
           file: ./services/node-service/Dockerfile
           load: true
           tags: node-telemetry-fleet:ci
