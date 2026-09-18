@@ -39,3 +39,21 @@
 1. Install dependencies:
    ```bash
    npm install
+| `GET` | `/` | Operational dark-mode status dashboard |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) (v24+)
+- [Docker Compose](https://docs.docker.com/compose/) (v2+)
+- [Node.js](https://nodejs.org/) (v20+ for local development)
+
+### Local Development
+
+1. Install dependencies:
+   ```bash
+   npm install
+----
