@@ -38,10 +38,18 @@ jobs:
           sleep 3
           docker ps -a
           docker logs test-agent
-          
+
       - name: Verify health endpoint
         run: curl --retry 10 --retry-delay 2 --retry-connrefused -f http://localhost:3000/health
-
+      
+      - name: Output container logs if test fails
+        if: always()
+        run: |
+          echo "=== Container Status ==="
+          docker ps -a
+          echo "=== Container Logs ==="
+          docker logs test-agent
+          
       - name: Log in to Docker Hub
         if: github.ref == 'refs/heads/test-ci' && github.event_name == 'push'
         uses: docker/login-action@v3
