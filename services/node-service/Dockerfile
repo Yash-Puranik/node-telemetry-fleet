@@ -3,7 +3,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 COPY package*.json ./
-RUN npm ci --only=production --ignore=scripts && \
+RUN npm ci --only=production --ignore-scripts && \
     npm cache clean --force
 COPY . .
 USER node
