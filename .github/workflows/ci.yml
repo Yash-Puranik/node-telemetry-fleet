@@ -1,21 +1,21 @@
  on:
->   push:
->     branches: [main, test-ci]
->   pull_request:
->     branches: [ main ]
-> jobs:
->   build-and-test:
->     runs-on: ubuntu-latest
->     steps:
->       - name: Check out repository
->       - uses: actions/checkout@v4
->       - name: Docker BuildX
->       - uses: docker/setup-buildx-action@v3
->       - name: Build docker image
->       - run: docker build -t node-telemetry-fleet:ci .
->       - name: Run container and verify health of server
->       - run: docker run -d -p 3000:3000 --name test-agent node-telemetry-fleet:ci
->       - name: Service initialization wait time
->       - run: sleep 5
->       - name: Verify health of server
->       - run: curl -f https://localhost:3000/health || exit 1
+  push:
+     branches: [ main, test-ci ]
+  pull_request:
+     branches: [ main ]
+ jobs:
+   build-and-test:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Check out repository
+         uses: actions/checkout@v4
+       - name: Docker BuildX
+         uses: docker/setup-buildx-action@v3
+       - name: Build docker image
+         run: docker build -t node-telemetry-fleet:ci .
+       - name: Run container and verify health of server
+         run: docker run -d -p 3000:3000 --name test-agent node-telemetry-fleet:ci
+       - name: Service initialization wait time
+         run: sleep 5
+       - name: Verify health of server
+         run: curl -f https://localhost:3000/health || exit 1
