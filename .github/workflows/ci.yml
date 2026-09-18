@@ -34,8 +34,11 @@ jobs:
         run: docker run -d -p 3000:3000 --name test-agent node-telemetry-fleet:ci
 
       - name: Inspect container logs
-        run: docker logs test-agent
-
+        run: |
+          sleep 3
+          docker ps -a
+          docker logs test-agent
+          
       - name: Verify health endpoint
         run: curl --retry 10 --retry-delay 2 --retry-connrefused -f http://localhost:3000/health
 
