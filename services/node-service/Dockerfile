@@ -2,7 +2,7 @@ FROM node:20-alpine
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm ci --only=production --ignore=scripts && \
     npm cache clean --force
 COPY . .
